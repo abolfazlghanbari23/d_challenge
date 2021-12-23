@@ -7,7 +7,7 @@ import com.example.challenge3.core.domain.Place
 import io.reactivex.Completable
 
 @Dao
-interface FormDao : BaseDao<Place> {
+interface PlaceDao : BaseDao<Place> {
 
     @Query("SELECT * FROM place_table")
     abstract fun getAllPlaces(): LiveData<List<Place>>

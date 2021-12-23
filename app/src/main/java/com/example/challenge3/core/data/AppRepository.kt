@@ -6,9 +6,11 @@ class AppRepository @Inject constructor(
     private val appDataSource: AppDataSource,
     private val appDatabase: AppDatabase
 ) {
+    fun getPlaces() = appDatabase.placeDao().getAllPlaces()
+
     fun getPlaces(page: Int, coordinates: String) = appDataSource.getPlaces(page, coordinates)
 
-    fun savePlacesDb() = appDatabase.FormDao().getAllPlaces()
+    fun savePlacesDb() = appDatabase.placeDao().getAllPlaces()
 
-    fun deletePlacesDb() = appDatabase.FormDao().deleteAllPlaces()
+    fun deletePlacesDb() = appDatabase.placeDao().deleteAllPlaces()
 }

@@ -8,7 +8,7 @@ import com.example.challenge3.core.domain.Place
 @Database(entities = [Place::class], version = 1)
 @TypeConverters(TypeConverter::class)
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun FormDao(): FormDao
+    abstract fun placeDao(): PlaceDao
 
     companion object {
         const val DATABASE_NAME = "app_db"
