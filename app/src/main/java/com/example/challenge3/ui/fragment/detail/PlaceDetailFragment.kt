@@ -1,32 +1,32 @@
 package com.example.challenge3.ui.fragment.detail
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import com.example.challenge3.R
+import com.example.challenge3.base.BaseFragment
+import com.example.challenge3.databinding.FragmentPlaceDetailBinding
 
-class PlaceDetailFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = PlaceDetailFragment()
-    }
+class PlaceDetailFragment : BaseFragment<FragmentPlaceDetailBinding>() {
 
     private lateinit var viewModel: PlaceDetailViewModel
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_place_detail, container, false)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(PlaceDetailViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun setupViews() {
+
     }
+
+    override val layoutRes: Int
+        get() = R.layout.fragment_place_detail
+
+    override fun subscribe() {
+
+    }
+
+    override fun unSubscribe() {
+
+    }
+
 
 }
