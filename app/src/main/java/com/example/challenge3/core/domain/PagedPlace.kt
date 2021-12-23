@@ -12,7 +12,7 @@ data class PagedPlace(
     val results: List<Place?>? = null
 )
 
-@Entity
+@Entity(tableName = "place_table")
 data class Place(
 
     @field:SerializedName("fsq_id")
