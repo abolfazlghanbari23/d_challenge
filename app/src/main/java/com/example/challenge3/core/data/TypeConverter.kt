@@ -7,7 +7,9 @@ import com.example.challenge3.core.domain.Location
 import com.example.challenge3.core.domain.RelatedPlaces
 import com.google.gson.Gson
 
-class TypeConverter(private val gson: Gson) {
+class TypeConverter() {
+
+    private val gson = Gson()
 
     @TypeConverter
     fun jsonToRelatedPlaces(json: String): RelatedPlaces {

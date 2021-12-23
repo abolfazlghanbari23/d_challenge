@@ -1,6 +1,7 @@
 package com.example.challenge3.core.domain
 
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 data class PagedPlace(
@@ -15,8 +16,9 @@ data class PagedPlace(
 @Entity(tableName = "place_table")
 data class Place(
 
-    @field:SerializedName("fsq_id")
-    val fsqId: String? = null,
+    @SerializedName("fsq_id")
+    @PrimaryKey(autoGenerate = false)
+    val fsqId: String,
 
     @field:SerializedName("distance")
     val distance: Int? = null,
@@ -36,8 +38,8 @@ data class Place(
     @field:SerializedName("location")
     val location: Location? = null,
 
-    @field:SerializedName("categories")
-    val categories: List<Category?>? = null
+//    @field:SerializedName("categories")
+//    val categories: List<Category?>? = null
 )
 
 data class Center(

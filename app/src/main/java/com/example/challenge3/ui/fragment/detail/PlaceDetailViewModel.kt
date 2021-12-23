@@ -1,7 +1,8 @@
 package com.example.challenge3.ui.fragment.detail
 
-import androidx.lifecycle.ViewModel
+import com.example.challenge3.base.BaseViewModel
+import javax.inject.Inject
 
-class PlaceDetailViewModel : ViewModel() {
+class PlaceDetailViewModel @Inject constructor() : BaseViewModel() {
 
 }
