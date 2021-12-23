@@ -1,6 +1,8 @@
 package com.example.challenge3.core.data
 
-class AppRepository constructor(
+import javax.inject.Inject
+
+class AppRepository @Inject constructor(
     private val appDataSource: AppDataSource,
     private val appDatabase: AppDatabase
 ) {
