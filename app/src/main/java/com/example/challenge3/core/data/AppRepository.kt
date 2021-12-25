@@ -13,9 +13,9 @@ class AppRepository @Inject constructor(
 
     suspend fun getPlaces(page: Int, coordinates: String) = appDataSource.getPlaces(page, coordinates)
 
-    fun savePlacesDb(data: List<Place>) = appDatabase.placeDao().insert(data)
+    suspend fun savePlacesDb(data: List<Place>) = appDatabase.placeDao().insert(data)
 
-    fun deletePlacesDb() = appDatabase.placeDao().deleteAllPlaces()
+    suspend fun deletePlacesDb() = appDatabase.placeDao().deleteAllPlaces()
 
     suspend fun getPlaceDetails(fsqId: String) = appDataSource.getPlaceDetail(fsqId)
 }

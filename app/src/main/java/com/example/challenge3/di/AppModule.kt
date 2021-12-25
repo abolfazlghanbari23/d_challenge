@@ -74,7 +74,7 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideDeletePlaceDb(repository: AppRepository) = DeletePlaceDb(repository)
+    fun provideDeletePlaceDb(repository: AppRepository) = DeletePlaceDbUseCase(repository)
 
     @Singleton
     @Provides
