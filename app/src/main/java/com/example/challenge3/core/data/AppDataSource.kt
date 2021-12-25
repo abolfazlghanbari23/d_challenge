@@ -2,8 +2,6 @@ package com.example.challenge3.core.data
 
 import com.example.challenge3.core.domain.PagedPlace
 import com.example.challenge3.core.domain.PlaceDetails
-import com.example.challenge3.core.domain.result.PageDetailResult
-import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Path

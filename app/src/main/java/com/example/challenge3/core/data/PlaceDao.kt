@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Query
 import com.example.challenge3.core.domain.Place
-import io.reactivex.Completable
 
 @Dao
 interface PlaceDao : BaseDao<Place> {

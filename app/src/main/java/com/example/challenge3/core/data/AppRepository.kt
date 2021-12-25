@@ -1,8 +1,6 @@
 package com.example.challenge3.core.data
 
 import com.example.challenge3.core.domain.Place
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 class AppRepository @Inject constructor(

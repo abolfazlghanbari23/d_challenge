@@ -8,11 +8,9 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import dagger.android.support.DaggerFragment
-import io.reactivex.disposables.CompositeDisposable
 
 abstract class BaseFragment<T : ViewDataBinding> : DaggerFragment(), ObserverView {
     protected lateinit var binding: T
-    protected val compositeDisposable = CompositeDisposable()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,8 +43,4 @@ abstract class BaseFragment<T : ViewDataBinding> : DaggerFragment(), ObserverVie
         return requireActivity() as BaseActivity
     }
 
-    override fun onDestroy() {
-        compositeDisposable.clear()
-        super.onDestroy()
-    }
 }

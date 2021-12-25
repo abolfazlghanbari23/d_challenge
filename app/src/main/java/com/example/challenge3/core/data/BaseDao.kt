@@ -1,7 +1,6 @@
 package com.example.challenge3.core.data
 
 import androidx.room.*
-import io.reactivex.Completable
 
 @Dao
 interface BaseDao<T> {
