@@ -1,10 +1,10 @@
 package com.example.challenge3.core.data
 
 import androidx.room.TypeConverter
-import com.example.challenge3.core.domain.Category
-import com.example.challenge3.core.domain.Geocodes
-import com.example.challenge3.core.domain.Location
-import com.example.challenge3.core.domain.RelatedPlaces
+import com.example.challenge3.core.domain.sub.Category
+import com.example.challenge3.core.domain.sub.Geocodes
+import com.example.challenge3.core.domain.sub.Location
+import com.example.challenge3.core.domain.sub.RelatedPlaces
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 

@@ -15,16 +15,12 @@ interface AppDataSource {
         @Query("page") page: Int,
         @Query("ll") coordinates: String,
         @Query("limit") limit: Int = 50,
-        @Query("client_id") clientId: String = "IOFGGXQIUMEBVSOTCCHGFRUZFIV1QXFOWHAY003Q0ZRRQJ4J",
-        @Query("client_secret") clientSecret: String = "I4L23G2TTSIRB5XVWJU4SVRF5FPIJDY2AFRFMXVWFIM4EGLQ",
         @Header("Authorization") auth: String = "fsq3fCfwHcUlRlaFWSLpiV9BjjaA+159taXV6rugBwV8yZE="
     ): Single<PagedPlace>
 
     @GET("v3/places/{fsqId}")
     fun getPlaceDetail(
         @Path("fsqId") fsqId: String,
-//        @Query("client_id") clientId: String = "IOFGGXQIUMEBVSOTCCHGFRUZFIV1QXFOWHAY003Q0ZRRQJ4J",
-//        @Query("client_secret") clientSecret: String = "I4L23G2TTSIRB5XVWJU4SVRF5FPIJDY2AFRFMXVWFIM4EGLQ",
         @Header("Authorization") auth: String = "fsq3fCfwHcUlRlaFWSLpiV9BjjaA+159taXV6rugBwV8yZE="
     )
 }
