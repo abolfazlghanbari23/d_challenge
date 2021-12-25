@@ -25,9 +25,11 @@ class PlacesViewModel @Inject constructor(
     fun getAllPlaces() = getPlacesDbUseCase.invoke()
 
     fun fetchPlaces(page: Int, coordinate: String) {
+        progressBarLiveData.value = true
         pager.isListFinished = false
         pager.isLoading = true
         getPlacesServerUseCase.invoke(page, coordinate)
+            .doOnEvent { pagedPlace, throwable -> progressBarLiveData.value = false }
             .subscribe(object : MySingleObserver<PagedPlace>(compositeDisposable) {
                 override fun onSuccess(t: PagedPlace) {
                     pager.index++

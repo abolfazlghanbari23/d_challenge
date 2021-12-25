@@ -7,7 +7,11 @@
     <fragment
         android:id="@+id/placeDetailFragment"
         android:name="com.example.challenge3.ui.fragment.detail.PlaceDetailFragment"
-        android:label="PlaceDetailFragment" />
+        android:label="PlaceDetailFragment">
+        <argument
+            android:name="placeId"
+            app:argType="string"/>
+    </fragment>
     <fragment
         android:id="@+id/placesFragment"
         android:name="com.example.challenge3.ui.fragment.places.PlacesFragment"

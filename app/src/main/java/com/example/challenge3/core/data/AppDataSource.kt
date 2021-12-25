@@ -14,8 +14,8 @@ interface AppDataSource {
         @Query("page") page: Int,
         @Query("ll") coordinates: String,
         @Query("limit") limit: Int = 50,
-        @Query("client_id") clientId: String = "OPGXR02CT3P4HINOPVLBSXJ0YQNCB13XAZLK2I34VZ2OCYVR",
-        @Query("client_secret") clientSecret: String = "3IMCNFUFLPICAXGPN2PMQGHMQK2D3ZTV3YUSPIYJHMR0KIWI",
-        @Header("Authorization") auth: String = "fsq3APQuknuijW2iZLITIrLEtMj8bmjq47fBErYYBAssOP8="
+        @Query("client_id") clientId: String = "IOFGGXQIUMEBVSOTCCHGFRUZFIV1QXFOWHAY003Q0ZRRQJ4J",
+        @Query("client_secret") clientSecret: String = "I4L23G2TTSIRB5XVWJU4SVRF5FPIJDY2AFRFMXVWFIM4EGLQ",
+        @Header("Authorization") auth: String = "fsq3fCfwHcUlRlaFWSLpiV9BjjaA+159taXV6rugBwV8yZE="
     ): Single<PagedPlace>
 }

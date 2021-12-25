@@ -1,5 +1,6 @@
 package com.example.challenge3.di
 
+import com.example.challenge3.ui.fragment.detail.PlaceDetailFragment
 import com.example.challenge3.ui.fragment.detail.PlaceDetailViewModel
 import com.example.challenge3.ui.fragment.places.PlacesFragment
 import dagger.Module
@@ -12,6 +13,6 @@ abstract class ViewBuilderModule {
     abstract fun contributePlacesFragment(): PlacesFragment
 
     @ContributesAndroidInjector
-    abstract fun contributePlaceDetailViewModel(): PlaceDetailViewModel
+    abstract fun contributePlaceDetailFragment(): PlaceDetailFragment
 
 }

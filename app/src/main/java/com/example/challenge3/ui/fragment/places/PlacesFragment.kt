@@ -3,6 +3,7 @@ package com.example.challenge3.ui.fragment.places
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.challenge3.R
@@ -18,7 +19,7 @@ class PlacesFragment : BaseFragment<FragmentPlacesBinding>() {
     private lateinit var viewModel: PlacesViewModel
     private val placeAdapter = PlaceAdapter(object : PlaceAdapter.CallBack {
         override fun onItemClick(place: Place) {
-
+            navigateToDetailsFragment(place.fsqId)
         }
     })
 
@@ -69,4 +70,8 @@ class PlacesFragment : BaseFragment<FragmentPlacesBinding>() {
 
     }
 
+    private fun navigateToDetailsFragment(placeId: String) {
+        val action = PlacesFragmentDirections.actionPlacesFragmentToPlaceDetailFragment(placeId)
+        Navigation.findNavController(binding.root).navigate(action)
+    }
 }
