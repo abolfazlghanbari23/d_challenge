@@ -23,4 +23,8 @@ class AppRepository @Inject constructor(
     private fun savePlacesDb(data: List<Place>) = appDatabase.placeDao().insert(data)
 
     fun deletePlacesDb() = appDatabase.placeDao().deleteAllPlaces()
+
+    fun getPlaceDetails(fsqId: String) = appDataSource.getPlaceDetail(fsqId)
+        .subscribeOn(Schedulers.io())
+        .observeOn(AndroidSchedulers.mainThread())
 }

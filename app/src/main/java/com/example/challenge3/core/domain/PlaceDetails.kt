@@ -6,7 +6,7 @@ import com.example.challenge3.core.domain.sub.Location
 import com.example.challenge3.core.domain.sub.RelatedPlaces
 import com.google.gson.annotations.SerializedName
 
-data class PlaceDetail(
+data class PlaceDetails(
 
     @field:SerializedName("fsq_id")
     val fsqId: String? = null,

@@ -1,6 +1,7 @@
 package com.example.challenge3.ui.fragment.detail
 
 import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import com.example.challenge3.R
 import com.example.challenge3.adapter.Pager
@@ -18,6 +19,9 @@ class PlaceDetailFragment : BaseFragment<FragmentPlaceDetailBinding>() {
             this,
             getBaseActivity().providerFactory
         )[PlaceDetailViewModel::class.java]
+
+        val args = PlaceDetailFragmentArgs.fromBundle(requireArguments())
+        viewModel.getPlaceDetails(args.placeId)
     }
 
     override fun setupViews() {
@@ -29,6 +33,14 @@ class PlaceDetailFragment : BaseFragment<FragmentPlaceDetailBinding>() {
 
     override fun subscribe() {
 
+        viewModel.progressBarLiveData.observe(viewLifecycleOwner, {
+            if (it) binding.pbLoading.visibility = View.VISIBLE
+            else binding.pbLoading.visibility = View.GONE
+        })
+
+        viewModel.placeDetailsLiveData.observe(viewLifecycleOwner, {
+
+        })
     }
 
     override fun unSubscribe() {

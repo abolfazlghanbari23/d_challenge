@@ -1,7 +1,7 @@
 package com.example.challenge3.core.data
 
 import com.example.challenge3.core.domain.PagedPlace
-import com.example.challenge3.core.domain.Place
+import com.example.challenge3.core.domain.PlaceDetails
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -22,5 +22,5 @@ interface AppDataSource {
     fun getPlaceDetail(
         @Path("fsqId") fsqId: String,
         @Header("Authorization") auth: String = "fsq3fCfwHcUlRlaFWSLpiV9BjjaA+159taXV6rugBwV8yZE="
-    )
+    ): Single<PlaceDetails>
 }

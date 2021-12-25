@@ -2,11 +2,11 @@ package com.example.challenge3.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.challenge3.adapter.Pager
 import com.example.challenge3.core.data.AppDataSource
 import com.example.challenge3.core.data.AppDatabase
 import com.example.challenge3.core.data.AppRepository
 import com.example.challenge3.core.usecase.DeletePlaceDb
+import com.example.challenge3.core.usecase.GetPlaceDetailsUseCase
 import com.example.challenge3.core.usecase.GetPlacesDbUseCase
 import com.example.challenge3.core.usecase.GetPlacesServerUseCase
 import dagger.Module
@@ -88,4 +88,7 @@ object AppModule {
     fun provideGetPlacesServerUseCase(repository: AppRepository) =
         GetPlacesServerUseCase(repository)
 
+    @Singleton
+    @Provides
+    fun provideGetPlaceDetailsUseCase(repository: AppRepository) = GetPlaceDetailsUseCase(repository)
 }
