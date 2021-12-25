@@ -5,10 +5,7 @@ import androidx.room.Room
 import com.example.challenge3.core.data.AppDataSource
 import com.example.challenge3.core.data.AppDatabase
 import com.example.challenge3.core.data.AppRepository
-import com.example.challenge3.core.usecase.DeletePlaceDb
-import com.example.challenge3.core.usecase.GetPlaceDetailsUseCase
-import com.example.challenge3.core.usecase.GetPlacesDbUseCase
-import com.example.challenge3.core.usecase.GetPlacesServerUseCase
+import com.example.challenge3.core.usecase.*
 import dagger.Module
 import dagger.Provides
 import okhttp3.Interceptor
@@ -90,5 +87,11 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideGetPlaceDetailsUseCase(repository: AppRepository) = GetPlaceDetailsUseCase(repository)
+    fun provideGetPlaceDetailsUseCase(repository: AppRepository) =
+        GetPlaceDetailsUseCase(repository)
+
+    @Singleton
+    @Provides
+    fun provideSavePlacesDbUseCase(repository: AppRepository) = SavePlacesDbUseCase(repository)
+
 }

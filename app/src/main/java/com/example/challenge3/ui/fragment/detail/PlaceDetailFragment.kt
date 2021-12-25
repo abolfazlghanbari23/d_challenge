@@ -41,6 +41,10 @@ class PlaceDetailFragment : BaseFragment<FragmentPlaceDetailBinding>() {
         viewModel.placeDetailsLiveData.observe(viewLifecycleOwner, {
 
         })
+
+        viewModel.errorLiveData.observe(viewLifecycleOwner, {
+
+        })
     }
 
     override fun unSubscribe() {

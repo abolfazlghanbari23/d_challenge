@@ -64,6 +64,9 @@ class PlacesFragment : BaseFragment<FragmentPlacesBinding>() {
             else binding.pbLoading.visibility = View.GONE
         })
 
+        viewModel.errorLiveData.observe(viewLifecycleOwner, {
+
+        })
     }
 
     override fun unSubscribe() {

@@ -10,8 +10,8 @@ import io.reactivex.Completable
 interface PlaceDao : BaseDao<Place> {
 
     @Query("SELECT * FROM place_table")
-    abstract fun getAllPlaces(): LiveData<List<Place>>
+    fun getAllPlaces(): LiveData<List<Place>>
 
     @Query("DELETE FROM place_table")
-    abstract fun deleteAllPlaces()
+    fun deleteAllPlaces()
 }

@@ -7,11 +7,11 @@ import io.reactivex.Completable
 interface BaseDao<T> {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract fun insert(data: List<T>)
+    fun insert(data: List<T>)
 
     @Update
-    abstract fun update(data: T)
+    fun update(data: T)
 
     @Delete
-    abstract fun delete(data: T)
+    fun delete(data: T)
 }

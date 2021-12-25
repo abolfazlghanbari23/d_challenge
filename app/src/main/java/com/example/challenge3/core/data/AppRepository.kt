@@ -11,20 +11,11 @@ class AppRepository @Inject constructor(
 ) {
     fun getPlaces() = appDatabase.placeDao().getAllPlaces()
 
-    fun getPlaces(page: Int, coordinates: String) = appDataSource.getPlaces(page, coordinates)
-        .subscribeOn(Schedulers.io())
-        .observeOn(AndroidSchedulers.mainThread())
-        .doOnSuccess {
-            if (page == 0)
-                deletePlacesDb()
-            savePlacesDb(it.results)
-        }
+    suspend fun getPlaces(page: Int, coordinates: String) = appDataSource.getPlaces(page, coordinates)
 
-    private fun savePlacesDb(data: List<Place>) = appDatabase.placeDao().insert(data)
+    fun savePlacesDb(data: List<Place>) = appDatabase.placeDao().insert(data)
 
     fun deletePlacesDb() = appDatabase.placeDao().deleteAllPlaces()
 
-    fun getPlaceDetails(fsqId: String) = appDataSource.getPlaceDetail(fsqId)
-        .subscribeOn(Schedulers.io())
-        .observeOn(AndroidSchedulers.mainThread())
+    suspend fun getPlaceDetails(fsqId: String) = appDataSource.getPlaceDetail(fsqId)
 }

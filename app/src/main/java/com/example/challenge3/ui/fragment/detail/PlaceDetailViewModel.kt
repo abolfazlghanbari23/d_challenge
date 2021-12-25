@@ -2,9 +2,12 @@ package com.example.challenge3.ui.fragment.detail
 
 import androidx.lifecycle.MutableLiveData
 import com.example.challenge3.base.BaseViewModel
-import com.example.challenge3.base.rx.MySingleObserver
 import com.example.challenge3.core.domain.PlaceDetails
 import com.example.challenge3.core.usecase.GetPlaceDetailsUseCase
+import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class PlaceDetailViewModel @Inject constructor(
@@ -13,20 +16,24 @@ class PlaceDetailViewModel @Inject constructor(
 
     val progressBarLiveData = MutableLiveData<Boolean>()
     val placeDetailsLiveData = MutableLiveData<PlaceDetails>()
+    val errorLiveData = MutableLiveData<Boolean>()
 
     fun getPlaceDetails(fsqId: String) {
         progressBarLiveData.value = true
-        getPlaceDetailsUseCase.invoke(fsqId)
-            .doOnEvent { _, _ -> progressBarLiveData.value = false }
-            .subscribe(object : MySingleObserver<PlaceDetails>(compositeDisposable) {
-                override fun onSuccess(placeDetails: PlaceDetails) {
-                    placeDetailsLiveData.value = placeDetails
-                }
+        errorLiveData.value = false
+        val handler = CoroutineExceptionHandler {_, throbable ->
+            errorLiveData.postValue(true)
+        }
 
-                override fun onError(e: Throwable) {
+        CoroutineScope(IO + handler + viewModelJob).launch {
+            try {
+                val details = getPlaceDetailsUseCase.invoke(fsqId)
+                placeDetailsLiveData.postValue(details)
+                progressBarLiveData.postValue(false)
+            } catch (e: Exception) {
 
-                }
+            }
+        }
 
-            })
     }
 }
