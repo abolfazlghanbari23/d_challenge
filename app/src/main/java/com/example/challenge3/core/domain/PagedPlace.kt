@@ -10,7 +10,7 @@ data class PagedPlace(
     val context: Context? = null,
 
     @field:SerializedName("results")
-    val results: List<Place?>? = null
+    val results: List<Place>
 )
 
 @Entity(tableName = "place_table")
@@ -38,8 +38,8 @@ data class Place(
     @field:SerializedName("location")
     val location: Location? = null,
 
-//    @field:SerializedName("categories")
-//    val categories: List<Category?>? = null
+    @field:SerializedName("categories")
+    val categories: List<Category?>? = null
 )
 
 data class Center(

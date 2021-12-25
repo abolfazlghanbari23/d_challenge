@@ -15,7 +15,8 @@ class PlaceAdapter(private val callBack: CallBack) :
 
     private val diffCallback = object : DiffUtil.ItemCallback<Place>() {
 
-        override fun areItemsTheSame(oldItem: Place, newItem: Place) = oldItem == newItem
+        override fun areItemsTheSame(oldItem: Place, newItem: Place) =
+            oldItem.fsqId == newItem.fsqId
 
         override fun areContentsTheSame(oldItem: Place, newItem: Place) = oldItem == newItem
 

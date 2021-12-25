@@ -6,6 +6,7 @@ import com.example.challenge3.core.domain.Geocodes
 import com.example.challenge3.core.domain.Location
 import com.example.challenge3.core.domain.RelatedPlaces
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 
 class TypeConverter() {
 
@@ -42,13 +43,14 @@ class TypeConverter() {
     }
 
     @TypeConverter
-    fun jsonToCategory(json: String): Category {
-        return gson.fromJson(json, Category::class.java)
+    fun jsonToCategory(json: String): List<Category?> {
+        val myType = object : TypeToken<List<Category?>>() {}.type
+        return gson.fromJson(json, myType)
     }
 
     @TypeConverter
-    fun categoryToJson(category: Category): String {
-        return gson.toJson(category)
+    fun categoryToJson(categories: List<Category?>): String {
+        return gson.toJson(categories)
     }
 
 }

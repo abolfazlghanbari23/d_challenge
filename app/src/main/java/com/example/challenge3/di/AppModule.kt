@@ -2,6 +2,7 @@ package com.example.challenge3.di
 
 import android.content.Context
 import androidx.room.Room
+import com.example.challenge3.adapter.Pager
 import com.example.challenge3.core.data.AppDataSource
 import com.example.challenge3.core.data.AppDatabase
 import com.example.challenge3.core.data.AppRepository

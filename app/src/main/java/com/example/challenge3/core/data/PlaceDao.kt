@@ -13,5 +13,5 @@ interface PlaceDao : BaseDao<Place> {
     abstract fun getAllPlaces(): LiveData<List<Place>>
 
     @Query("DELETE FROM place_table")
-    abstract fun deleteAllPlaces(): Completable
+    abstract fun deleteAllPlaces()
 }
