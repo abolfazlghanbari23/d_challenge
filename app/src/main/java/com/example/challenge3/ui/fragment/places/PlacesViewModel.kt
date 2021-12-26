@@ -11,6 +11,7 @@ import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class PlacesViewModel @Inject constructor(
@@ -35,6 +36,7 @@ class PlacesViewModel @Inject constructor(
 
         val handler = CoroutineExceptionHandler { _, throbable ->
             errorLiveData.postValue(true)
+            progressBarLiveData.postValue(false)
         }
 
         CoroutineScope(IO + handler + viewModelJob).launch {

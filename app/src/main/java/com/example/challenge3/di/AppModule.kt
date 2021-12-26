@@ -67,7 +67,6 @@ object AppModule {
     @Provides
     fun provideRetrofit(httpClient: OkHttpClient): Retrofit = Retrofit.Builder()
         .baseUrl("https://api.foursquare.com/")
-        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .addConverterFactory(GsonConverterFactory.create())
         .client(httpClient)
         .build()

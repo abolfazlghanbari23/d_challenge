@@ -14,12 +14,12 @@ interface AppDataSource {
         @Query("page") page: Int,
         @Query("ll") coordinates: String,
         @Query("limit") limit: Int = 50,
-        @Header("Authorization") auth: String = "fsq3fCfwHcUlRlaFWSLpiV9BjjaA+159taXV6rugBwV8yZE="
+        @Header("Authorization") auth: String = "fsq3L+UuTwAfODPlKSyv5OtEQj+XzsvNrS1398AqVfmtlHM="
     ): PagedPlace
 
     @GET("v3/places/{fsqId}")
     suspend fun getPlaceDetail(
         @Path("fsqId") fsqId: String,
-        @Header("Authorization") auth: String = "fsq3fCfwHcUlRlaFWSLpiV9BjjaA+159taXV6rugBwV8yZE="
+        @Header("Authorization") auth: String = "fsq3L+UuTwAfODPlKSyv5OtEQj+XzsvNrS1398AqVfmtlHM="
     ): PlaceDetails
 }

@@ -23,16 +23,13 @@ class PlaceDetailViewModel @Inject constructor(
         errorLiveData.value = false
         val handler = CoroutineExceptionHandler {_, throbable ->
             errorLiveData.postValue(true)
+            progressBarLiveData.postValue(false)
         }
 
         CoroutineScope(IO + handler + viewModelJob).launch {
-            try {
-                val details = getPlaceDetailsUseCase.invoke(fsqId)
-                placeDetailsLiveData.postValue(details)
-                progressBarLiveData.postValue(false)
-            } catch (e: Exception) {
-
-            }
+            val details = getPlaceDetailsUseCase.invoke(fsqId)
+            placeDetailsLiveData.postValue(details)
+            progressBarLiveData.postValue(false)
         }
 
     }

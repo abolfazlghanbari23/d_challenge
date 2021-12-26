@@ -9,25 +9,25 @@ import com.google.gson.annotations.SerializedName
 data class PlaceDetails(
 
     @field:SerializedName("fsq_id")
-    val fsqId: String? = null,
+    val fsqId: String,
 
     @field:SerializedName("chains")
     val chains: List<Any?>? = null,
 
     @field:SerializedName("timezone")
-    val timezone: String? = null,
+    val timezone: String,
 
     @field:SerializedName("name")
-    val name: String? = null,
+    val name: String,
 
     @field:SerializedName("related_places")
     val relatedPlaces: RelatedPlaces? = null,
 
     @field:SerializedName("geocodes")
-    val geocodes: Geocodes? = null,
+    val geocodes: Geocodes,
 
     @field:SerializedName("location")
-    val location: Location? = null,
+    val location: Location,
 
     @field:SerializedName("categories")
     val categories: List<Category?>? = null

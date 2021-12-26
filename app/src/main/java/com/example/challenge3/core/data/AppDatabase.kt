@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.example.challenge3.core.domain.Place
 
-@Database(entities = [Place::class], version = 1)
+@Database(entities = [Place::class], version = 2)
 @TypeConverters(TypeConverter::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun placeDao(): PlaceDao
