@@ -5,8 +5,8 @@ import com.google.gson.annotations.SerializedName
 data class Main(
 
 	@field:SerializedName("latitude")
-	val latitude: Double? = null,
+	val latitude: Double,
 
 	@field:SerializedName("longitude")
-	val longitude: Double? = null
+	val longitude: Double
 )

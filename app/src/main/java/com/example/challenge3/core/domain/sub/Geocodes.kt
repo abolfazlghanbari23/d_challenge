@@ -5,5 +5,5 @@ import com.google.gson.annotations.SerializedName
 data class Geocodes(
 
 	@field:SerializedName("main")
-	val main: Main? = null
+	val main: Main
 )

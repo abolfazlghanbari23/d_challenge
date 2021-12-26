@@ -8,7 +8,7 @@ import com.example.challenge3.core.domain.Place
 @Dao
 interface PlaceDao : BaseDao<Place> {
 
-    @Query("SELECT * FROM place_table")
+    @Query("SELECT * FROM place_table ORDER BY distance ASC")
     fun getAllPlaces(): LiveData<List<Place>>
 
     @Query("DELETE FROM place_table")

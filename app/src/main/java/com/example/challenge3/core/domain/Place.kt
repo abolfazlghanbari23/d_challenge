@@ -35,4 +35,9 @@ data class Place(
 
     @field:SerializedName("categories")
     val categories: List<Category?>? = null
-)
+) {
+    fun getGeocodePretty(): String {
+        val main = geocodes.main
+        return String.format("%.2f", main.longitude) + "/" + String.format("%.2f", main.latitude)
+    }
+}
