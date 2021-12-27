@@ -46,8 +46,8 @@ class PlaceDetailViewModel @Inject constructor(
             placeImageErrorLiveData.postValue(true)
         }
         CoroutineScope(IO + handler + viewModelJob).launch {
-            val image = getPlaceImageUseCase.invoke(fsqId)
-            placeImageLiveData.value = image
+            val images = getPlaceImageUseCase.invoke(fsqId)
+            placeImageLiveData.postValue(images)
         }
 
     }

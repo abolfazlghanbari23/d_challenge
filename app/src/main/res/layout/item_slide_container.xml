@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="placeImage"
+            type="com.example.challenge3.core.domain.PlaceImage" />
+        <variable
+            name="callBack"
+            type="com.example.challenge3.adapter.SliderAdapter.CallBack" />
+    </data>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/img_slide"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:background="@color/black"
+            img_url="@{placeImage.imgUrl}"
+            android:onClick="@{() -> callBack.onClick(placeImage)}">
+        </ImageView>
+
+    </FrameLayout>
+</layout>

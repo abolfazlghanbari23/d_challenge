@@ -11,12 +11,11 @@ object BindingAdapters {
 
     @BindingAdapter(value = ["img_url"], requireAll = true)
     @JvmStatic
-    fun setRound(imageView: ImageView, imageUrl: String) {
+    fun loadImage(imageView: ImageView, imageUrl: String) {
         imageView.load(imageUrl) {
             crossfade(true)
             placeholder(R.drawable.img_placeholder)
             error(R.drawable.img_placeholder)
-            transformations(CircleCropTransformation())
             addHeader("Authorization", BuildConfig.API_KEY)
         }
     }

@@ -5,7 +5,9 @@ import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import com.example.challenge3.R
 import com.example.challenge3.adapter.Pager
+import com.example.challenge3.adapter.SliderAdapter
 import com.example.challenge3.base.BaseFragment
+import com.example.challenge3.core.domain.PlaceImage
 import com.example.challenge3.databinding.FragmentPlaceDetailBinding
 import com.example.challenge3.ui.fragment.places.PlacesViewModel
 
@@ -49,7 +51,10 @@ class PlaceDetailFragment : BaseFragment<FragmentPlaceDetailBinding>() {
         })
 
         viewModel.placeImageLiveData.observe(viewLifecycleOwner, {
-
+            val sliderAdapter = SliderAdapter(it, object : SliderAdapter.CallBack {
+                override fun onClick(placeImage: PlaceImage) { }
+            })
+            binding.vpImages.adapter = sliderAdapter
         })
 
         viewModel.placeImageErrorLiveData.observe(viewLifecycleOwner, {

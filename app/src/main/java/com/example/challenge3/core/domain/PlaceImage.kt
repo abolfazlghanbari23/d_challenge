@@ -22,4 +22,6 @@ data class PlaceImage(
 
     @field:SerializedName("height")
     val height: Int
-)
+) {
+    fun getImgUrl() = prefix + "original" +suffix
+}
