@@ -1,24 +1,35 @@
 package com.example.challenge3.sharedpref
 
 import android.content.Context
+import android.location.Location
+import com.example.challenge3.base.Extensions.ll
+import com.example.challenge3.ui.fragment.places.PlacesFragment
 
 class UserSharedPref(context: Context) {
 
     companion object {
         const val SHARED_PREF_NAME = "user_pref"
         const val KEY_LOCATION = "location"
-        const val KEY_FOREGROUND_ENABLED = "tracking_foreground_location"
     }
 
     private val sharedPref = context.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE)
 
-    fun getLastLocation() = sharedPref.getString(KEY_LOCATION, null)
+    fun getLastLocation() : Location? {
+        val locStr = sharedPref.getString(KEY_LOCATION, null)
+        return if (locStr == null) {
+            null
+        } else {
+            val location = Location("").apply {
+                val locStrs = locStr.split(",")
+                longitude = locStrs[1].toDouble()
+                latitude = locStrs[0].toDouble()
+            }
+            location
+        }
+    }
 
-    fun saveLastLocation(location: String) =
-        sharedPref.edit().putString(KEY_LOCATION, location).apply()
+    fun saveLastLocation(location: Location) {
+        sharedPref.edit().putString(KEY_LOCATION, location.ll()).apply()
+    }
 
-    fun getLocationTrackingPref() = sharedPref.getBoolean(KEY_FOREGROUND_ENABLED, false)
-
-    fun saveLocationTrackingPref(requestingLocationUpdates: Boolean) =
-        sharedPref.edit().putBoolean(KEY_FOREGROUND_ENABLED, requestingLocationUpdates).apply()
 }
