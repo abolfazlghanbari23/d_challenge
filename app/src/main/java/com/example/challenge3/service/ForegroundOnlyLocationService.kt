@@ -12,10 +12,10 @@ import android.os.Looper
 import androidx.core.app.NotificationCompat
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.example.challenge3.base.BaseService
+import com.example.challenge3.base.Extensions.toText
 import com.example.challenge3.sharedpref.UserSharedPref
 import com.example.challenge3.ui.activity.MainActivity
 import com.google.android.gms.location.*
-import dagger.android.DaggerService
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
@@ -104,7 +104,7 @@ class ForegroundOnlyLocationService : BaseService() {
     }
 
     override fun onUnbind(intent: Intent): Boolean {
-        if (!configurationChange && SharedPreferenceUtil.getLocationTrackingPref(this)) {
+        if (!configurationChange && userSharedPref.getLocationTrackingPref()) {
             val notification = generateNotification(currentLocation)
             startForeground(NOTIFICATION_ID, notification)
             serviceRunningInForeground = true
@@ -119,7 +119,7 @@ class ForegroundOnlyLocationService : BaseService() {
     }
 
     fun subscribeToLocationUpdates() {
-        SharedPreferenceUtil.saveLocationTrackingPref(this, true)
+        userSharedPref.saveLocationTrackingPref(true)
 
         startService(Intent(applicationContext, ForegroundOnlyLocationService::class.java))
 
@@ -128,7 +128,7 @@ class ForegroundOnlyLocationService : BaseService() {
                 locationRequest, locationCallback, Looper.getMainLooper()
             )
         } catch (unlikely: SecurityException) {
-            SharedPreferenceUtil.saveLocationTrackingPref(this, false)
+            userSharedPref.saveLocationTrackingPref(false)
         }
     }
 
@@ -141,9 +141,9 @@ class ForegroundOnlyLocationService : BaseService() {
                     stopSelf()
                 }
             }
-            SharedPreferenceUtil.saveLocationTrackingPref(this, false)
+            userSharedPref.saveLocationTrackingPref(false)
         } catch (unlikely: SecurityException) {
-            SharedPreferenceUtil.saveLocationTrackingPref(this, true)
+            userSharedPref.saveLocationTrackingPref(true)
         }
     }
 
