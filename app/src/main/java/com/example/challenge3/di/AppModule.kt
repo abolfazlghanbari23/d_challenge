@@ -6,6 +6,7 @@ import com.example.challenge3.core.data.AppDataSource
 import com.example.challenge3.core.data.AppDatabase
 import com.example.challenge3.core.data.AppRepository
 import com.example.challenge3.core.usecase.*
+import com.example.challenge3.sharedpref.UserSharedPref
 import dagger.Module
 import dagger.Provides
 import okhttp3.Interceptor
@@ -13,7 +14,6 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
@@ -93,4 +93,7 @@ object AppModule {
     @Provides
     fun provideSavePlacesDbUseCase(repository: AppRepository) = SavePlacesDbUseCase(repository)
 
+    @Singleton
+    @Provides
+    fun provideUserPref(context: Context) = UserSharedPref(context)
 }
