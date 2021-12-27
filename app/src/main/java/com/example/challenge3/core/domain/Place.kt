@@ -24,9 +24,6 @@ data class Place(
     @field:SerializedName("name")
     val name: String,
 
-    @field:SerializedName("related_places")
-    val relatedPlaces: RelatedPlaces? = null,
-
     @field:SerializedName("geocodes")
     val geocodes: Geocodes,
 
@@ -40,4 +37,6 @@ data class Place(
         val main = geocodes.main
         return String.format("%.2f", main.longitude) + "/" + String.format("%.2f", main.latitude)
     }
+
+    fun getImageUrl() = "https://api.foursquare.com/v3/places/${fsqId}/photos"
 }

@@ -95,5 +95,9 @@ object AppModule {
 
     @Singleton
     @Provides
+    fun provideGetPlaceImageUseCase(repository: AppRepository) = GetPlaceImageUseCase(repository)
+
+    @Singleton
+    @Provides
     fun provideUserPref(context: Context) = UserSharedPref(context)
 }

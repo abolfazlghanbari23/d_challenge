@@ -29,6 +29,15 @@
             android:padding="8dp"
             android:onClick="@{() -> callback.onItemClick(place)}">
 
+            <ImageView
+                android:id="@+id/iv_place"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                img_url=""
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
             <TextView
                 android:id="@+id/tv_name"
                 android:layout_width="wrap_content"
@@ -38,18 +47,19 @@
                 android:text="@{place.name}"
                 tools:text="name"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"/>
+                app:layout_constraintStart_toEndOf="@id/iv_place"/>
 
             <TextView
                 android:id="@+id/tv_distance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:textColor="@color/white"
                 android:text="@{place.distance + ``}"
-                tools:text="distance"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_place"
+                app:layout_constraintStart_toEndOf="@id/iv_place"
                 app:layout_constraintTop_toBottomOf="@id/tv_name"
-                app:layout_constraintStart_toStartOf="parent"/>
+                tools:text="distance" />
 
             <TextView
                 android:id="@+id/tv_timezone"
@@ -66,12 +76,13 @@
                 android:id="@+id/tv_geocode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:textColor="@color/white"
                 android:text="@{place.geocodePretty}"
-                tools:text="distance"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_place"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_timezone" />
+                app:layout_constraintTop_toBottomOf="@id/tv_timezone"
+                tools:text="distance" />
 
 
             <ImageView

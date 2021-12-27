@@ -21,7 +21,9 @@ class PlaceDetailFragment : BaseFragment<FragmentPlaceDetailBinding>() {
         )[PlaceDetailViewModel::class.java]
 
         val args = PlaceDetailFragmentArgs.fromBundle(requireArguments())
-        viewModel.getPlaceDetails(args.placeId)
+        val placeId = args.placeId
+        viewModel.getPlaceDetails(placeId)
+        viewModel.getPlaceImage(placeId)
     }
 
     override fun setupViews() {
@@ -43,6 +45,14 @@ class PlaceDetailFragment : BaseFragment<FragmentPlaceDetailBinding>() {
         })
 
         viewModel.errorLiveData.observe(viewLifecycleOwner, {
+
+        })
+
+        viewModel.placeImageLiveData.observe(viewLifecycleOwner, {
+
+        })
+
+        viewModel.placeImageErrorLiveData.observe(viewLifecycleOwner, {
 
         })
     }

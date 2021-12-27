@@ -115,6 +115,9 @@ class PlacesFragment : BaseFragment<FragmentPlacesBinding>() {
 
         viewModel.getAllPlaces().observe(viewLifecycleOwner, {
             placeAdapter.submitList(it)
+
+//            if (it.isEmpty()) binding.llEmptyState.visibility = View.VISIBLE
+//            else binding.llEmptyState.visibility = View.GONE
         })
 
         viewModel.progressBarLiveData.observe(viewLifecycleOwner, {
@@ -140,7 +143,11 @@ class PlacesFragment : BaseFragment<FragmentPlacesBinding>() {
         super.onStart()
 
         val serviceIntent = Intent(requireContext(), ForegroundOnlyLocationService::class.java)
-        requireActivity().bindService(serviceIntent, foregroundOnlyServiceConnection, Context.BIND_AUTO_CREATE)
+        requireActivity().bindService(
+            serviceIntent,
+            foregroundOnlyServiceConnection,
+            Context.BIND_AUTO_CREATE
+        )
     }
 
     override fun onResume() {
@@ -148,7 +155,8 @@ class PlacesFragment : BaseFragment<FragmentPlacesBinding>() {
         LocalBroadcastManager.getInstance(requireContext()).registerReceiver(
             foregroundOnlyBroadcastReceiver,
             IntentFilter(
-                ForegroundOnlyLocationService.ACTION_FOREGROUND_ONLY_LOCATION_BROADCAST)
+                ForegroundOnlyLocationService.ACTION_FOREGROUND_ONLY_LOCATION_BROADCAST
+            )
         )
     }
 
@@ -262,7 +270,7 @@ class PlacesFragment : BaseFragment<FragmentPlacesBinding>() {
 
         } else {
             val distance = lastLoc?.distanceTo(location) ?: 0F
-            if (distance > 5) {
+            if (distance > 100) {
                 viewModel.pager.index = 0
                 viewModel.fetchPlaces(viewModel.pager.index, location.ll())
             }
