@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="callback"
             type="com.example.challenge3.adapter.PlaceAdapter.CallBack" />
@@ -26,22 +27,23 @@
             android:layout_height="wrap_content"
             android:background="#EDF0F1"
             android:foreground="@drawable/effect_ripple"
-            android:paddingVertical="12dp"
+            android:onClick="@{() -> callback.onItemClick(place)}"
             android:paddingHorizontal="12dp"
-            android:onClick="@{() -> callback.onItemClick(place)}">
+            android:paddingVertical="12dp">
 
             <TextView
                 android:id="@+id/tv_name"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:ellipsize="end"
+                android:textDirection="locale"
                 android:text="@{place.name}"
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 android:textStyle="bold"
-                android:ellipsize="end"
-                android:layout_marginEnd="12dp"
-                app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintEnd_toStartOf="@+id/tv_distance"
+                app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="name" />
@@ -50,10 +52,10 @@
                 android:id="@+id/tv_distance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{place.distance + ` m`}"
                 android:background="@drawable/shape_distance_bg"
-                android:textColor="@color/black"
                 android:padding="8dp"
+                android:text="@{place.distance + ` m`}"
+                android:textColor="@color/black"
                 android:textSize="15sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -63,20 +65,20 @@
                 android:id="@+id/tv_timezone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:textColor="@color/black"
-                android:text="@{place.timezone}"
-                tools:text="timezone"
                 android:layout_marginTop="10dp"
+                android:text="@{place.timezone}"
+                android:textColor="@color/black"
+                android:textSize="15sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_name" />
+                app:layout_constraintTop_toBottomOf="@id/tv_name"
+                tools:text="timezone" />
 
             <LinearLayout
                 android:id="@+id/ll_geocode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_marginTop="10dp"
+                android:orientation="horizontal"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_timezone">
 
@@ -98,7 +100,6 @@
 
 
             </LinearLayout>
-
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
