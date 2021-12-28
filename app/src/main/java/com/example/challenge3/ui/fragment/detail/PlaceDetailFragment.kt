@@ -47,6 +47,8 @@ class PlaceDetailFragment : BaseFragment<FragmentPlaceDetailBinding>() {
 
         viewModel.placeDetailsLiveData.observe(viewLifecycleOwner, {
             binding.tvTitle.text = it.name
+            binding.tvGeocode.text = it.geocodes.getGeocodePretty()
+            binding.tvTimezone.text = it.timezone
         })
 
         viewModel.errorLiveData.observe(viewLifecycleOwner, {
