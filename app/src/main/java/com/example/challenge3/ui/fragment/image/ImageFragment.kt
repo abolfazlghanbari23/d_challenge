@@ -1,4 +1,4 @@
-package com.example.challenge3.ui
+package com.example.challenge3.ui.fragment.image
 
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
@@ -7,7 +7,6 @@ import com.example.challenge3.BuildConfig
 import com.example.challenge3.R
 import com.example.challenge3.base.BaseFragment
 import com.example.challenge3.databinding.FragmentImageBinding
-import com.example.challenge3.ui.fragment.detail.PlaceDetailViewModel
 
 class ImageFragment : BaseFragment<FragmentImageBinding>() {
 

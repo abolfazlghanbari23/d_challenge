@@ -1,4 +1,4 @@
-package com.example.challenge3.ui
+package com.example.challenge3.ui.fragment.image
 
 import com.example.challenge3.base.BaseViewModel
 import javax.inject.Inject
