@@ -35,8 +35,6 @@ data class Place(
 ) {
     fun getGeocodePretty(): String {
         val main = geocodes.main
-        return String.format("%.2f", main.longitude) + "/" + String.format("%.2f", main.latitude)
+        return String.format("%.2f", main.longitude) + "," + String.format("%.2f", main.latitude)
     }
-
-    fun getImageUrl() = "https://api.foursquare.com/v3/places/${fsqId}/photos"
 }
