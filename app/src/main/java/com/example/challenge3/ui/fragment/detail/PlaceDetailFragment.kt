@@ -30,6 +30,7 @@ class PlaceDetailFragment : BaseFragment<FragmentPlaceDetailBinding>() {
 
     override fun setupViews() {
 
+        requireActivity().actionBar?.title = getString(R.string.all_three_dots)
     }
 
     override val layoutRes: Int
@@ -43,7 +44,7 @@ class PlaceDetailFragment : BaseFragment<FragmentPlaceDetailBinding>() {
         })
 
         viewModel.placeDetailsLiveData.observe(viewLifecycleOwner, {
-
+            requireActivity().actionBar?.title = it.name
         })
 
         viewModel.errorLiveData.observe(viewLifecycleOwner, {

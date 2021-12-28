@@ -98,6 +98,8 @@ class PlacesFragment : BaseFragment<FragmentPlacesBinding>() {
         }
 
         startLocationService()
+
+        requireActivity().actionBar?.title = getString(R.string.PlacesFragment_list_of_places)
     }
 
     private fun startLocationService() {
