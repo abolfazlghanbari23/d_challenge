@@ -4,11 +4,14 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.challenge3.R
+import com.example.challenge3.adapter.CategoryAdapter
 import com.example.challenge3.adapter.Pager
 import com.example.challenge3.adapter.SliderAdapter
 import com.example.challenge3.base.BaseFragment
 import com.example.challenge3.core.domain.PlaceImage
+import com.example.challenge3.core.domain.sub.Category
 import com.example.challenge3.databinding.FragmentPlaceDetailBinding
 import com.example.challenge3.ui.fragment.places.PlacesFragmentDirections
 import com.example.challenge3.ui.fragment.places.PlacesViewModel
@@ -49,6 +52,18 @@ class PlaceDetailFragment : BaseFragment<FragmentPlaceDetailBinding>() {
             binding.tvTitle.text = it.name
             binding.tvGeocode.text = it.geocodes.getGeocodePretty()
             binding.tvTimezone.text = it.timezone
+            if (it.categories != null && it.categories.isNotEmpty()) {
+                val categoryAdapter = CategoryAdapter(object : CategoryAdapter.CallBack {
+                    override fun onClick(category: Category) {
+
+                    }
+                })
+                binding.rvCategories.apply {
+                    layoutManager = LinearLayoutManager(context)
+                    adapter = categoryAdapter
+                }
+            }
+
         })
 
         viewModel.errorLiveData.observe(viewLifecycleOwner, {

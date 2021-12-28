@@ -9,4 +9,6 @@ data class Icon(
 
     @field:SerializedName("suffix")
     val suffix: String? = null
-)
+) {
+    fun getImageUrl() = prefix + "original" + suffix
+}

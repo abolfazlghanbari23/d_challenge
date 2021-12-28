@@ -12,4 +12,6 @@ data class Category(
 
     @field:SerializedName("id")
     val id: Int? = null
-)
+) {
+    fun getImageUrl() = icon?.getImageUrl() ?: ""
+}
