@@ -11,9 +11,6 @@ data class PlaceDetails(
     @field:SerializedName("fsq_id")
     val fsqId: String,
 
-    @field:SerializedName("chains")
-    val chains: List<Any?>? = null,
-
     @field:SerializedName("timezone")
     val timezone: String,
 

@@ -17,6 +17,7 @@
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
             android:background="@color/black"
+            android:scaleType="centerCrop"
             img_url="@{placeImage.imgUrl}"
             android:onClick="@{() -> callBack.onClick(placeImage)}">
         </ImageView>

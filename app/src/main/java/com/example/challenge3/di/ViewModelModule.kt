@@ -2,6 +2,7 @@ package com.example.challenge3.di
 
 import androidx.lifecycle.ViewModel
 import com.example.challenge3.di.viewmodel.ViewModelKey
+import com.example.challenge3.ui.ImageViewModel
 import com.example.challenge3.ui.fragment.detail.PlaceDetailViewModel
 import com.example.challenge3.ui.fragment.places.PlacesViewModel
 import dagger.Binds
@@ -20,5 +21,10 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(PlaceDetailViewModel::class)
     abstract fun providePlaceDetailViewModel(placeDetailViewModel: PlaceDetailViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ImageViewModel::class)
+    abstract fun provideImageViewModel(imageViewModel: ImageViewModel): ViewModel
 
 }
